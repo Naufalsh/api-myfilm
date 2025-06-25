@@ -6,6 +6,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GalleryController;
 use App\Models\Gallery;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\PlayerController;
 
 // Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 //     return $request->user();
@@ -36,11 +37,16 @@ Route::get('images/{id}', function ($id) {
 });
 
 //route kendaraan
-// Route::apiResource('kendaraans', KendaraanController::class);
 Route::post('/kendaraans/store', [KendaraanController::class, 'store']);
 Route::get('/kendaraans', [KendaraanController::class, 'index']);
 Route::post('/kendaraans/{id}', [KendaraanController::class, 'update']);
 Route::delete('/kendaraans/{id}', [KendaraanController::class, 'destroy']);
+
+//route for player api
+Route::get('players', [PlayerController::class, 'index']);
+Route::post('players', [PlayerController::class, 'store']);
+Route::post('players/{id}', [PlayerController::class, 'update']);
+Route::delete('players/{id}', [PlayerController::class, 'destroy']);
 
 
 require __DIR__ . '/auth.php';
