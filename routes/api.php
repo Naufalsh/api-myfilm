@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GalleryController;
 use App\Models\Gallery;
+use App\Http\Controllers\KendaraanController;
 
 // Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 //     return $request->user();
@@ -33,6 +34,13 @@ Route::get('images/{id}', function ($id) {
     }
     return response()->file($path);
 });
+
+//route kendaraan
+// Route::apiResource('kendaraans', KendaraanController::class);
+Route::post('/kendaraans/store', [KendaraanController::class, 'store']);
+Route::get('/kendaraans', [KendaraanController::class, 'index']);
+Route::post('/kendaraans/{id}', [KendaraanController::class, 'update']);
+Route::delete('/kendaraans/{id}', [KendaraanController::class, 'destroy']);
 
 
 require __DIR__ . '/auth.php';
